@@ -1,0 +1,53 @@
+:root {
+  --pink: #fbe6f4ff;
+  --yellow: #fffad1ff;
+  --green: #e1f0e5ff;
+  --blue: #b5caf9ff;
+  --orange: #f5e6db;
+  --raisin: #2b283aff;
+  --grey: #d4d4d4;
+}
+
+body {
+  background-color: var(--raisin);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 100px;
+}
+p {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+star:hover {
+  transform: scale(1.24);
+  transition: transform 500ms;
+}
+
+.alien:hover {
+  animation: alien 1s infinite alternate ease-in-out;
+}
+.unicorn:hover {
+  animation: unicorn 2s ease-in;
+  z-index: 1;
+}
+@keyframes alien {
+  from {
+    transform: translate(-25%, 0);
+  }
+  to {
+    transform: translate(25%, 0);
+  }
+}
+
+@keyframes unicorn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(3);
+  }
+}
