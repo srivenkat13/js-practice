@@ -42,7 +42,7 @@ const planets = [
   },
 ];
 
-let scale = 150;
+let scale = 500;
 
 function render(arr) {
   arr.forEach((planet) => {
