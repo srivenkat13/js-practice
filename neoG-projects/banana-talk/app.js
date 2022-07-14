@@ -11,7 +11,7 @@ function getTranslatedText() {
 
   fetch(completeUrl)
     .then((Response) => Response.json())
-    .then((data) => (translatedText.innerText = data.contents.translatedText))
+    .then((data) => (translatedText.innerText = data.contents.translated))
     .catch((error) => {
       alert("some error occured with API", error);
       //   console.error("API ratelimit is reached");
