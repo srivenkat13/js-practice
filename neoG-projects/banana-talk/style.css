@@ -24,6 +24,7 @@ textarea {
   box-sizing: border-box;
   display: block;
   width: 100%;
+  padding: 10px;
   min-height: 20vh;
   margin-top: 2rem;
   font-size: large;
@@ -52,6 +53,7 @@ button:active {
   min-width: 20vh;
   overflow: scroll;
   box-sizing: border-box;
+  padding: 10px;
 }
 footer {
   position: fixed;
