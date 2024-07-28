@@ -153,3 +153,33 @@ console.log(AccessValues(person)); //['Alice' ,30]
 
 </details>
 
+
+#### 5. Merging Objects
+You have two objects, obj1 and obj2. Write a function that merges these two objects into one. If both objects have a property with the same key, the value from obj2 should overwrite the value from obj1.
+
+``` js
+const obj1 = {
+  a: 1,
+  b: 2,
+  c: 3
+};
+
+const obj2 = {
+  b: 4,
+  d: 5
+};
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+const ObjectMerger = (obj1, obj2) => {
+  return {
+    ...obj1,
+    ...obj2
+  }
+}
+console.log(ObjectMerger(obj1,obj2)) //{ a: 1, b: 4, c: 3, d: 5 }
+
+```
+</details>
