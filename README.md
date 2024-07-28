@@ -240,3 +240,48 @@ console.log(FlattenObject(nestedObject));
 
 ```
 </details>
+
+#### 7. Merging and Summarizing Array of Objects
+
+You have an array of objects where each object represents a sales transaction. Each transaction includes the product name, quantity sold, and the total amount. Your task is to merge these transactions and summarize the total quantity and amount for each product.
+
+Input:
+```js
+const transactions = [
+    { product: "Laptop", quantity: 2, amount: 1200 },
+    { product: "Mouse", quantity: 5, amount: 50 },
+    { product: "Laptop", quantity: 1, amount: 600 },
+    { product: "Keyboard", quantity: 3, amount: 150 },
+    { product: "Mouse", quantity: 2, amount: 20 }
+];
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+const Summarize = (arr) => {
+  const result = [];
+  arr.forEach((element) => {
+    const { product, quantity, amount } = element;
+
+    if (!result[product]) {
+      result[product] = { totalAmount: 0, totalQuantity: 0 };
+    }
+
+    result[product].totalAmount += amount
+    result[product].totalQuantity += quantity
+  });
+
+  return result;
+  };
+
+console.log(Summarize(transactions))
+/*
+      [
+        Laptop: { totalAmount: 1800, totalQuantity: 3 },
+        Mouse: { totalAmount: 70, totalQuantity: 7 },
+        Keyboard: { totalAmount: 150, totalQuantity: 3 }
+      ]
+*/
+```
+</details>
