@@ -19,6 +19,7 @@ body {
   flex-wrap: wrap;
   max-width: 100%;
   width: 1020px;
+  position: relative;
 }
 .project {
   border-radius: 10px;
@@ -44,5 +45,21 @@ body {
 .dark-mode {
   background: #2b283aff;
   color: #fff;
+}
+#redirect {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border: 2px gray dotted;
+  padding: 10px;
+}
+a {
   
+  text-decoration: none;
+}
+#redirect:hover {
+  border: 2px gray solid;
+  transform: scale(1.1);
 }
