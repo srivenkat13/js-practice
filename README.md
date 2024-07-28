@@ -183,3 +183,60 @@ console.log(ObjectMerger(obj1,obj2)) //{ a: 1, b: 4, c: 3, d: 5 }
 
 ```
 </details>
+
+
+#### 6. Flattening a Nested Object
+Given a deeply nested object, write a function that flattens it into a single-level object. The keys of the flattened object should be the paths to the nested values, joined by dots.
+
+```js
+//input
+const nestedObject = {
+    level1: {
+        level2: {
+            level3a: {
+                level4a: "value1",
+                level4b: "value2"
+            },
+            level3b: {
+                level4c: "value3"
+            }
+        },
+        level2b: "value4"
+    },
+    level1b: "value5"
+};
+```
+
+```js
+//expected output
+{
+    "level1.level2.level3a.level4a": "value1",
+    "level1.level2.level3a.level4b": "value2",
+    "level1.level2.level3b.level4c": "value3",
+    "level1.level2b": "value4",
+    "level1b": "value5"
+}
+
+```
+<details><summary><b>Solution</b></summary>
+
+```js
+const FlattenObject = (obj, parentKey = "", result = {}) => {
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const value = obj[key];
+      const newKey = parentKey ? `${parentKey}.${key}` : key
+      if (typeof value  === "object"  ) {
+        FlattenObject(value, newKey,result)
+      }
+      else{
+        result[newKey] = value
+      }
+    }
+  }
+  return result;
+};
+console.log(FlattenObject(nestedObject));
+
+```
+</details>
