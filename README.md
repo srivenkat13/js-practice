@@ -118,7 +118,38 @@ const SumofMinMax = (input) => {
 console.log(SumofMinMax([])); \\null
 console.log(SumofMinMax(inputArray)); \\156
 
+```
+
+</details>
+
+#### 4. Accessing Object Properties
+Given the following object, how would you access and print the values of the properties name and age?
+
+```js
+const person = {
+    name: "Alice",
+    age: 30,
+    city: "New York"
+};
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+
+const AccessValues = (obj) => {
+  const result = [];
+  for (const key in obj) {
+    if (key === "name" || key === "age") {
+      result.push(obj[key]);
+    }
+  }
+  return result
+};
+
+console.log(AccessValues(person)); //['Alice' ,30]
 
 ```
 
 </details>
+
