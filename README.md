@@ -51,4 +51,45 @@ console.log(transformInput(input));
 </p>
 </details>
 
-#### 2.
+#### 2. Given a deeply nested object as below, return all the key values 
+
+``` js
+const nestedObject = {
+  level1: {
+    level2: {
+      level3a: {
+        level4a: "value1",
+        level4b: "value2",
+      },
+      level3b: {
+        level4c: "value3",
+      },
+    },
+    level2b: "value4",
+  },
+  level1b: "value5",
+};
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+
+const extractKeys = (obj) => {
+  const keys = [];
+  for (const key in obj) {
+    keys.push(key);
+    if (typeof obj[key] === "object") {
+      keys.push(...extractKeys(obj[key]));
+    }
+  }
+  return keys;
+};
+
+console.log(extractKeys(nestedObject));
+
+\\output : [  'level1',  'level2',  'level3a', 'level4a',  'level4b', 'level3b',  'level4c', 'level2b',  'level1b']
+
+```
+
+</details>
