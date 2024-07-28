@@ -93,3 +93,32 @@ console.log(extractKeys(nestedObject));
 ```
 
 </details>
+
+#### 3. Given an array return the sum of min and max from the array
+
+``` js
+const inputArray = [1,55,156,1,1,0,1,98]
+
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+
+const SumofMinMax = (input) => {
+  if(input.length === 0){
+   return null
+  }
+  const min = Math.min(...input)
+  const max = Math.max(...input)
+
+  return min+max
+}
+
+console.log(SumofMinMax([])); \\null
+console.log(SumofMinMax(inputArray)); \\156
+
+
+```
+
+</details>
