@@ -1,4 +1,18 @@
+<details><summary>Table of Contents</summary>
 
+ <h2>Table of Contents </h2>
+
+- [Objects](#objects)
+- [1. Transform the given input to output](#1-transform-the-given-input-to-output)
+- [2. Nested Object](#2-nested-object)
+- [3. Sum of min-max](#3-sum-of-min-max)
+- [4. Accessing Object Properties](#4-accessing-object-properties)
+- [5. Merging Objects](#5-merging-objects)
+- [6. Flattening a Nested Object](#6-flattening-a-nested-object)
+- [7. Merging and Summarizing Array of Objects](#7-merging-and-summarizing-array-of-objects)
+</details>
+
+####  Objects
 #### 1. Transform the given input to output
 
 ```js
@@ -51,7 +65,8 @@ console.log(transformInput(input));
 </p>
 </details>
 
-#### 2. Given a deeply nested object as below, return all the key values 
+#### 2. Nested Object
+ Given a deeply nested object as below, return all the key values 
 
 ``` js
 const nestedObject = {
@@ -94,7 +109,8 @@ console.log(extractKeys(nestedObject));
 
 </details>
 
-#### 3. Given an array return the sum of min and max from the array
+#### 3. Sum of min-max 
+ Given an array return the sum of min and max from the array
 
 ``` js
 const inputArray = [1,55,156,1,1,0,1,98]
