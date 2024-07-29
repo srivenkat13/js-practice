@@ -3,16 +3,18 @@
  <h2>Table of Contents </h2>
 
 - [Objects](#objects)
-- [1. Transform the given input to output](#1-transform-the-given-input-to-output)
-- [2. Nested Object](#2-nested-object)
-- [3. Sum of min-max](#3-sum-of-min-max)
-- [4. Accessing Object Properties](#4-accessing-object-properties)
-- [5. Merging Objects](#5-merging-objects)
-- [6. Flattening a Nested Object](#6-flattening-a-nested-object)
-- [7. Merging and Summarizing Array of Objects](#7-merging-and-summarizing-array-of-objects)
+  - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
+  - [2. Nested Object](#2-nested-object)
+  - [3. Accessing Object Properties](#3-accessing-object-properties)
+  - [4. Merging Objects](#4-merging-objects)
+  - [5. Flattening a Nested Object](#5-flattening-a-nested-object)
+  - [6. Merging adf and Summarizing Array of Objects](#6-merging-adf-and-summarizing-array-of-objects)
+  - [7. Checking Object Equality](#7-checking-object-equality)
+- [Arrays](#arrays)
+  - [1. Sum of min-max](#1-sum-of-min-max)
 </details>
 
-####  Objects
+###  Objects
 #### 1. Transform the given input to output
 
 ```js
@@ -109,36 +111,9 @@ console.log(extractKeys(nestedObject));
 
 </details>
 
-#### 3. Sum of min-max 
- Given an array return the sum of min and max from the array
 
-``` js
-const inputArray = [1,55,156,1,1,0,1,98]
 
-```
-
-<details><summary><b>Solution</b></summary>
-
-```js
-
-const SumofMinMax = (input) => {
-  if(input.length === 0){
-   return null
-  }
-  const min = Math.min(...input)
-  const max = Math.max(...input)
-
-  return min+max
-}
-
-console.log(SumofMinMax([])); \\null
-console.log(SumofMinMax(inputArray)); \\156
-
-```
-
-</details>
-
-#### 4. Accessing Object Properties
+#### 3. Accessing Object Properties
 Given the following object, how would you access and print the values of the properties name and age?
 
 ```js
@@ -170,7 +145,7 @@ console.log(AccessValues(person)); //['Alice' ,30]
 </details>
 
 
-#### 5. Merging Objects
+#### 4. Merging Objects
 You have two objects, obj1 and obj2. Write a function that merges these two objects into one. If both objects have a property with the same key, the value from obj2 should overwrite the value from obj1.
 
 ``` js
@@ -201,7 +176,7 @@ console.log(ObjectMerger(obj1,obj2)) //{ a: 1, b: 4, c: 3, d: 5 }
 </details>
 
 
-#### 6. Flattening a Nested Object
+#### 5. Flattening a Nested Object
 Given a deeply nested object, write a function that flattens it into a single-level object. The keys of the flattened object should be the paths to the nested values, joined by dots.
 
 ```js
@@ -257,7 +232,7 @@ console.log(FlattenObject(nestedObject));
 ```
 </details>
 
-#### 7. Merging and Summarizing Array of Objects
+#### 6. Merging adf and Summarizing Array of Objects
 
 You have an array of objects where each object represents a sales transaction. Each transaction includes the product name, quantity sold, and the total amount. Your task is to merge these transactions and summarize the total quantity and amount for each product.
 
@@ -300,4 +275,86 @@ console.log(Summarize(transactions))
       ]
 */
 ```
+</details>
+
+#### 7. Checking Object Equality
+
+You are given two objects, and you need to write a function that checks whether they are deeply equal. Two objects are considered deeply equal if they have the same properties with the same values, including nested objects.
+
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+const person1 = {
+  name: "Alice",
+  age: 30,
+  address: {
+    city: "Wonderland",
+    postalCode: "12345",
+  },
+};
+
+const person2 = {
+  name: "Alice",
+  age: 30,
+  address: {
+    city: "Wonderland",
+    postalCode: "12345",
+  },
+};
+
+const DeeplyEqual = (obj1, obj2) => {
+  if (obj1 === obj2) return true;
+  if (
+    typeof obj1 !== "object" ||
+    typeof obj2 !== "object" ||
+    obj1 === null ||
+    obj2 === null
+  ) {
+    return false;
+  }
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) return false;
+
+  for (const key of keys1) {
+    if (!keys2.includes(key)) return false;
+    if (!DeeplyEqual(obj1[key], obj2[key])) return false;
+  }
+  return true;
+};
+
+console.log(DeeplyEqual(person1, person2));
+
+```
+
+###  Arrays
+#### 1. Sum of min-max 
+ Given an array return the sum of min and max from the array
+
+``` js
+const inputArray = [1,55,156,1,1,0,1,98]
+
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+
+const SumofMinMax = (input) => {
+  if(input.length === 0){
+   return null
+  }
+  const min = Math.min(...input)
+  const max = Math.max(...input)
+
+  return min+max
+}
+
+console.log(SumofMinMax([])); \\null
+console.log(SumofMinMax(inputArray)); \\156
+
+```
+
 </details>
