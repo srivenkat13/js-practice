@@ -7,6 +7,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css"
     />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 20 20'><text x='0' y='14'>🤔</text></svg>"
+    />
     <style>
       body {
         background-color: #212121;
@@ -15,18 +19,34 @@
       #content {
         padding: 10px;
       }
+      details > ul:last-child {
+        border: 2px #666161 solid;
+      }
       ul {
         list-style-type: none;
-        border: 1px #fafafa solid;
         border-radius: 10px;
         padding: 10px 20px;
+        font-family: monospace;
+        margin: 0;
       }
       li {
         margin-bottom: 0.5rem;
       }
+      li:hover,
+      li:focus,
+      li:active {
+        transform: translateX(10px);
+        transition: transform 0.3s ease;
+      }
       a {
         color: #fafafa;
         text-decoration: none;
+      }
+      a:hover,
+      a:focus,
+      a:active {
+        color: #666161;
+        text-decoration: underline;
       }
     </style>
     <!-- <link rel="stylesheet" href="style.css" /> -->
