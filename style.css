@@ -63,3 +63,23 @@ a {
   border: 2px gray solid;
   transform: scale(1.1);
 }
+ 
+#topButton {
+  display: none; 
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+#topButton:hover {
+  background-color: #555;
+}
