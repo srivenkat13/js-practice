@@ -10,6 +10,7 @@
   - [5. Flattening a Nested Object](#5-flattening-a-nested-object)
   - [6. Merging adf and Summarizing Array of Objects](#6-merging-adf-and-summarizing-array-of-objects)
   - [7. Checking Object Equality](#7-checking-object-equality)
+  - [8. Counting Properties in an Object](#8-counting-properties-in-an-object)
 - [Arrays](#arrays)
   - [1. Sum of min-max](#1-sum-of-min-max)
 </details>
@@ -328,6 +329,30 @@ const DeeplyEqual = (obj1, obj2) => {
 console.log(DeeplyEqual(person1, person2));
 
 ```
+</details>
+
+#### 8. Counting Properties in an Object
+Write a function that counts the number of properties (key-value pairs) in a given object. The function should return the count as an integer.
+
+```js
+const exampleObject = {
+  name: "Alice",
+  age: 30,
+  profession: "Engineer"
+};
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+const countProperties = (obj) => {
+  return Object.keys(obj).length;
+};
+
+console.log(countProperties(exampleObject)) //3
+```
+
+</details>
 
 ###  Arrays
 #### 1. Sum of min-max 
