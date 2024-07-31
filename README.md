@@ -13,6 +13,8 @@
   - [8. Counting Properties in an Object](#8-counting-properties-in-an-object)
 - [Arrays](#arrays)
   - [1. Sum of min-max](#1-sum-of-min-max)
+- [Strings](#strings)
+  - [1. Can form Palindrome](#1-can-form-palindrome)
 </details>
 
 ###  Objects
@@ -379,6 +381,17 @@ const SumofMinMax = (input) => {
 
 console.log(SumofMinMax([])); \\null
 console.log(SumofMinMax(inputArray)); \\156
+
+```
+</details>
+
+### Strings
+#### 1. Can form Palindrome 
+Write a function CanFormPalindrome(str) that takes a single string parameter and returns "true" if the characters of the string can be rearranged to form a palindrome, and "false" otherwise. A palindrome is a word that reads the same backward as forward. Consider only alphanumeric characters and ignore case.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
 
 ```
 
