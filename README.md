@@ -15,6 +15,7 @@
   - [1. Sum of min-max](#1-sum-of-min-max)
 - [Strings](#strings)
   - [1. Can form Palindrome](#1-can-form-palindrome)
+  - [2. Check if Anagram](#2-check-if-anagram)
 </details>
 
 ###  Objects
@@ -392,7 +393,42 @@ Write a function CanFormPalindrome(str) that takes a single string parameter and
 <details><summary><b>Solution</b></summary>
 
 ``` js
+function CanFormPalindrome(str) {
+  const charactersCount = {};
+  for (let char of str) {
+    char = char.toLowerCase()
+    charactersCount[char] = (charactersCount[char] || 0) + 1;
+  }
 
+  let oddCount = 0;
+  for (let char in charactersCount) {
+    if (charactersCount[char] % 2 !== 0) oddCount++;
+  }
+  return oddCount <= 1;
+}
+
+console.log(CanFormPalindrome("Namaste")); //false
+console.log(CanFormPalindrome("Madam")); //true
+
+```
+
+</details>
+
+#### 2. Check if Anagram
+Create a function AnagramCheck(str1, str2) that takes two string parameters and returns "true" if the two strings are anagrams of each other, and "false" otherwise. An anagram is a word or phrase formed by rearranging the letters of another, using all the original letters exactly once. The function should be case-insensitive and ignore spaces.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+function isAnagram(str_one, str_two) {
+  const sortedStrOne = str_one.toLowerCase().split("").sort().join('')
+  const sortedStrTwo = str_two.toLowerCase().split("").sort().join('')
+
+  return sortedStrOne === sortedStrTwo;
+}
+
+console.log(isAnagram("Namaste", "World")); //false
+console.log(isAnagram("Hero", "Oreh")); //true
 ```
 
 </details>
