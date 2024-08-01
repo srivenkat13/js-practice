@@ -69,12 +69,27 @@
       #topButton:hover {
         background-color: #0671cf;
       }
+
+      .progress-container {
+        position: fixed;
+        height: 0.2rem;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      #progress-bar{
+        width: 0%;
+        height: 100%;
+        background-color: cyan;
+      }
     </style>
     <title>JS Questions</title>
   </head>
   <body>
     <div class="progress-container">
-      <div class="progress-bar" id="progress-bar"></div>
+      <div id="progress-bar"></div>
   </div>
     <div id="content"></div>
     <button onclick="moveToTop()" id="topButton" title="Go to top">↑</button>
@@ -120,6 +135,16 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
       }
+      
+      function updateProgressBar(){
+        let scrollToTop = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrollUpdate = (scrollToTop/height) * 100 ;
+
+        document.getElementById('progress-bar').style.width = scrollUpdate + '%';
+      }
+
+      window.addEventListener('scroll', updateProgressBar);
     </script>
   </body>
 </html>
