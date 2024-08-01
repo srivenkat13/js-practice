@@ -454,6 +454,26 @@ function FirstNonRepeatingChar(str) {
 console.log(FirstNonRepeatingChar('swiss')) //w
 console.log(FirstNonRepeatingChar('ababababax')) //x
 console.log(FirstNonRepeatingChar('yolloy')) //""
+
+// Alternate 
+function RemoveDuplicatesTwo(str) {
+  let uniqueChar = new Set(str.toLowerCase());
+  return [...uniqueChar].join("");
+}
+//Preserving the order and for senteces 
+
+function RemoveDuplicatesInOrder(str) {
+  const seen = new Set();
+  const result = [];
+
+  for (let char of str.toLowerCase()) {
+    if (char.match(/[a-z]/) && !seen.has(char)) {
+      seen.add(char);
+      result.push(char);
+    } else if(char === ' ')
+    result.push(char)
+  }
+  re
 ```
 
 </details>
