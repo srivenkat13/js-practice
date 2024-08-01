@@ -16,6 +16,7 @@
 - [Strings](#strings)
   - [1. Can form Palindrome](#1-can-form-palindrome)
   - [2. Check if Anagram](#2-check-if-anagram)
+  - [3. Non repeating Character](#3-non-repeating-character)
 </details>
 
 ###  Objects
@@ -429,6 +430,30 @@ function isAnagram(str_one, str_two) {
 
 console.log(isAnagram("Namaste", "World")); //false
 console.log(isAnagram("Hero", "Oreh")); //true
+```
+
+</details>
+
+#### 3. Non repeating Character
+Create a function FirstNonRepeatingCharacter(str) that takes a string and returns the first non-repeating character. If there is no such character, return an empty string.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+function FirstNonRepeatingChar(str) {
+  const charCount = {};
+  for (let char of str) {
+    char = char.toLowerCase();
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  for( let char of str){
+    if(charCount[char] === 1) return char
+  }
+  return ""
+}
+console.log(FirstNonRepeatingChar('swiss')) //w
+console.log(FirstNonRepeatingChar('ababababax')) //x
+console.log(FirstNonRepeatingChar('yolloy')) //""
 ```
 
 </details>
