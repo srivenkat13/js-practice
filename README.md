@@ -10,8 +10,13 @@
   - [5. Flattening a Nested Object](#5-flattening-a-nested-object)
   - [6. Merging adf and Summarizing Array of Objects](#6-merging-adf-and-summarizing-array-of-objects)
   - [7. Checking Object Equality](#7-checking-object-equality)
+  - [8. Counting Properties in an Object](#8-counting-properties-in-an-object)
 - [Arrays](#arrays)
   - [1. Sum of min-max](#1-sum-of-min-max)
+- [Strings](#strings)
+  - [1. Can form Palindrome](#1-can-form-palindrome)
+  - [2. Check if Anagram](#2-check-if-anagram)
+  - [3. Non repeating Character](#3-non-repeating-character)
 </details>
 
 ###  Objects
@@ -328,6 +333,30 @@ const DeeplyEqual = (obj1, obj2) => {
 console.log(DeeplyEqual(person1, person2));
 
 ```
+</details>
+
+#### 8. Counting Properties in an Object
+Write a function that counts the number of properties (key-value pairs) in a given object. The function should return the count as an integer.
+
+```js
+const exampleObject = {
+  name: "Alice",
+  age: 30,
+  profession: "Engineer"
+};
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+const countProperties = (obj) => {
+  return Object.keys(obj).length;
+};
+
+console.log(countProperties(exampleObject)) //3
+```
+
+</details>
 
 ###  Arrays
 #### 1. Sum of min-max 
@@ -355,6 +384,96 @@ const SumofMinMax = (input) => {
 console.log(SumofMinMax([])); \\null
 console.log(SumofMinMax(inputArray)); \\156
 
+```
+</details>
+
+### Strings
+#### 1. Can form Palindrome 
+Write a function CanFormPalindrome(str) that takes a single string parameter and returns "true" if the characters of the string can be rearranged to form a palindrome, and "false" otherwise. A palindrome is a word that reads the same backward as forward. Consider only alphanumeric characters and ignore case.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+function CanFormPalindrome(str) {
+  const charactersCount = {};
+  for (let char of str) {
+    char = char.toLowerCase()
+    charactersCount[char] = (charactersCount[char] || 0) + 1;
+  }
+
+  let oddCount = 0;
+  for (let char in charactersCount) {
+    if (charactersCount[char] % 2 !== 0) oddCount++;
+  }
+  return oddCount <= 1;
+}
+
+console.log(CanFormPalindrome("Namaste")); //false
+console.log(CanFormPalindrome("Madam")); //true
+
+```
+
+</details>
+
+#### 2. Check if Anagram
+Create a function AnagramCheck(str1, str2) that takes two string parameters and returns "true" if the two strings are anagrams of each other, and "false" otherwise. An anagram is a word or phrase formed by rearranging the letters of another, using all the original letters exactly once. The function should be case-insensitive and ignore spaces.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+function isAnagram(str_one, str_two) {
+  const sortedStrOne = str_one.toLowerCase().split("").sort().join('')
+  const sortedStrTwo = str_two.toLowerCase().split("").sort().join('')
+
+  return sortedStrOne === sortedStrTwo;
+}
+
+console.log(isAnagram("Namaste", "World")); //false
+console.log(isAnagram("Hero", "Oreh")); //true
+```
+
+</details>
+
+#### 3. Non repeating Character
+Create a function FirstNonRepeatingCharacter(str) that takes a string and returns the first non-repeating character. If there is no such character, return an empty string.
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+function FirstNonRepeatingChar(str) {
+  const charCount = {};
+  for (let char of str) {
+    char = char.toLowerCase();
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+  for( let char of str){
+    if(charCount[char] === 1) return char
+  }
+  return ""
+}
+console.log(FirstNonRepeatingChar('swiss')) //w
+console.log(FirstNonRepeatingChar('ababababax')) //x
+console.log(FirstNonRepeatingChar('yolloy')) //""
+
+// Alternate 
+function RemoveDuplicatesTwo(str) {
+  let uniqueChar = new Set(str.toLowerCase());
+  return [...uniqueChar].join("");
+}
+//Preserving the order and for senteces 
+
+function RemoveDuplicatesInOrder(str) {
+  const seen = new Set();
+  const result = [];
+
+  for (let char of str.toLowerCase()) {
+    if (char.match(/[a-z]/) && !seen.has(char)) {
+      seen.add(char);
+      result.push(char);
+    } else if(char === ' ')
+    result.push(char)
+  }
+  re
 ```
 
 </details>
