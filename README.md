@@ -8,9 +8,10 @@
   - [3. Accessing Object Properties](#3-accessing-object-properties)
   - [4. Merging Objects](#4-merging-objects)
   - [5. Flattening a Nested Object](#5-flattening-a-nested-object)
-  - [6. Merging adf and Summarizing Array of Objects](#6-merging-adf-and-summarizing-array-of-objects)
+  - [6. Merging and Summarizing Array of Objects](#6-merging-and-summarizing-array-of-objects)
   - [7. Checking Object Equality](#7-checking-object-equality)
   - [8. Counting Properties in an Object](#8-counting-properties-in-an-object)
+  - [9. Swap keys to Values in an object](#9-swap-keys-to-values-in-an-object)
 - [Arrays](#arrays)
   - [1. Sum of min-max](#1-sum-of-min-max)
 - [Strings](#strings)
@@ -238,7 +239,7 @@ console.log(FlattenObject(nestedObject));
 ```
 </details>
 
-#### 6. Merging adf and Summarizing Array of Objects
+#### 6. Merging and Summarizing Array of Objects
 
 You have an array of objects where each object represents a sales transaction. Each transaction includes the product name, quantity sold, and the total amount. Your task is to merge these transactions and summarize the total quantity and amount for each product.
 
@@ -355,6 +356,33 @@ const countProperties = (obj) => {
 };
 
 console.log(countProperties(exampleObject)) //3
+```
+
+</details>
+
+#### 9. Swap keys to Values in an object
+
+```js
+const exampleObject = {
+  name: "Alice",
+  age: 30,
+  };
+```
+
+<details><summary><b>Solution</b></summary>
+
+```js
+const SwapKeysToValues = (obj) => {
+  const newObject = {};
+  for (let key in obj) {
+    if (newObject.hasOwnProperty(obj[key])) {
+      return "Duplicate Value found";
+    }
+    newObject[obj[key]] = key;
+  }
+  return newObject;
+};
+console.log(SwapKeysToValues(exampleObject)) 
 ```
 
 </details>
