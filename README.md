@@ -17,6 +17,7 @@
   - [1. Can form Palindrome](#1-can-form-palindrome)
   - [2. Check if Anagram](#2-check-if-anagram)
   - [3. Non repeating Character](#3-non-repeating-character)
+  - [4. Find the most repeated character](#4-find-the-most-repeated-character)
 </details>
 
 ###  Objects
@@ -473,7 +474,35 @@ function RemoveDuplicatesInOrder(str) {
     } else if(char === ' ')
     result.push(char)
   }
-  re
+  return result.join('')
 ```
-
 </details>
+
+#### 4. Find the most repeated character 
+
+<details><summary><b>Solution</b></summary>
+
+``` js
+const str = "hey there welcome";
+
+function MostFrequentLetter(str) {
+  let charCount = {};
+  for (let char of str) {
+    if (char !== " ") {
+      char = char.toLowerCase();
+      charCount[char] = (charCount[char] || 0) + 1;
+    }
+  }
+  let maxCount = 1;
+  let mostFrequentChar = "";
+  for (let char in charCount) {
+    if (charCount[char] > maxCount) {
+      maxCount = charCount[char];
+      mostFrequentChar = char;
+    }
+  }
+  return mostFrequentChar;
+}
+console.log(MostFrequentLetter(str));//e
+
+```
