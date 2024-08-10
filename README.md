@@ -2,6 +2,10 @@
 
  <h2>Table of Contents </h2>
 
+- [Polyfills](#polyfills)
+  - [1. map](#1-map)
+  - [2. Filter](#2-filter)
+  - [3. Reduce](#3-reduce)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -14,13 +18,52 @@
   - [9. Swap keys to Values in an object](#9-swap-keys-to-values-in-an-object)
 - [Arrays](#arrays)
   - [1. Sum of min-max](#1-sum-of-min-max)
-  - [2.Two Sum](#2two-sum)
+  - [2. Two Sum](#2-two-sum)
 - [Strings](#strings)
   - [1. Can form Palindrome](#1-can-form-palindrome)
   - [2. Check if Anagram](#2-check-if-anagram)
   - [3. Non repeating Character](#3-non-repeating-character)
   - [4. Find the most repeated character](#4-find-the-most-repeated-character)
 </details>
+
+### Polyfills
+#### 1. map
+
+```js
+Array.prototype.myMap = function (cb) {
+    let result =[]
+    for(let i = 0; i < this.length ; i++) {
+        result.push(cb(this[i],i,this))
+    }
+    return result
+}
+```
+
+#### 2. Filter
+```js
+Array.prototype.myFilter = function (cb){
+    
+    let result = []
+    for (let i = 0; i <this.length; i++){
+        if(cb(this[i],i,this)) {
+            result.push(this[i])
+        }
+    }
+    return result
+}
+```
+
+#### 3. Reduce
+```js
+Array.prototype.myReduce = function (cb,init) {
+    let acc = init
+    for (let i = 0; i < this.length; i++) {
+        acc = acc? cb(acc,this[i],i,this)  : this[i]      
+    }
+    return acc
+}
+```
+
 
 ###  Objects
 #### 1. Transform the given input to output
@@ -417,7 +460,7 @@ console.log(SumofMinMax(inputArray)); \\156
 ```
 </details>
 
-#### 2.Two Sum
+#### 2. Two Sum
  Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
