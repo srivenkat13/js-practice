@@ -6,6 +6,7 @@
   - [1. map](#1-map)
   - [2. Filter](#2-filter)
   - [3. Reduce](#3-reduce)
+  - [4. call bind apply](#4-call-bind-apply)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -63,7 +64,63 @@ Array.prototype.myReduce = function (cb,init) {
     return acc
 }
 ```
+#### 4. call bind apply
+<details><summary>.call()</summary>
+<p>
 
+```js
+Function.prototype.MyCall = function (context = {}, ...args) {
+  if (typeof this !== "function") throw new Error(`${this} is not a function`);
+  //if its not called on an Object
+  if (typeof context !== "object") context = Object(context);
+
+  context.fn = this;
+  context.fn(...args);
+};
+function greet(greeting, punctuation) {
+  console.log(greeting + ", " + this.name + punctuation);
+}
+const user = { name: "venkat" };
+greet.MyCall(user,'Hello','!') //Hello, venkat!
+```
+</p>
+</details>
+
+<details><summary>.apply()</summary>
+<p>
+
+```js
+Function.prototype.MyApply = function (context = {}, ...args) {
+  if (typeof this !== "function") throw new Error(`${this} is not a function`);
+   if (!Array.isArray(args)) {
+    throw new Error(`CreateListFromArrayLike called on non-object`);
+  }
+
+  context.fn = this;
+  context.fn(...args);
+};
+greet.MyApply(user,'Hello','!') //Hello, venkat!
+```
+</p>
+</details>
+
+<details><summary>.bind()</summary>
+<p>
+
+```js
+Function.prototype.MyBind = function (context = {}, ...args) {
+  if (typeof this !== "function") throw new Error(`${this} is not a function`);
+  
+  context.fn = this;
+  return function(...newArgs) {
+    context.fn(...args,...newArgs);
+  }
+};
+const newGreet = greet.MyBind(user,'Hello','!') 
+newGreet() //Hello, venkat!
+```
+</p>
+</details>
 
 ###  Objects
 #### 1. Transform the given input to output
