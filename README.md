@@ -7,6 +7,8 @@
   - [2. Filter](#2-filter)
   - [3. Reduce](#3-reduce)
   - [4. call bind apply](#4-call-bind-apply)
+- [Important JS Questions](#important-js-questions)
+  - [1. Implement Fetch with n retries](#1-implement-fetch-with-n-retries)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -122,6 +124,43 @@ newGreet() //Hello, venkat!
 </p>
 </details>
 
+ ### Important JS Questions
+ #### 1. Implement Fetch with n retries 
+
+ <details><summary><b>Solution</b></summary>
+<p>
+we introduce pause between each retry using a promise
+
+```js
+async function fetchWithRetries (url, options= {} , retries , delay) {
+  for (let i =1 ; i<retries ; i++){
+    try{
+      const response = await fetch (url,options)
+      if(!response.ok) {
+        throw new Error(`HTTP Error ${response.status}`)
+      }
+      return response
+    }
+    catch(error){
+      if(i<reries) console.log(`Retry... ${i}`)
+      else throw error
+    await new Promise (resolve => setTimeOut(resolve,delay))
+    }
+  }
+}
+const url_working="https://jsonplaceholder.typicode.com/posts/1"
+const url_not_working="https://jsonplaceholder.typocode.com/posts/1"
+
+fetchWithRetry(url_not_working, {},5, 2000)
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Fetch failed:", error));
+
+```
+
+</p>
+</details>
+ 
 ###  Objects
 #### 1. Transform the given input to output
 
