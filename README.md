@@ -9,6 +9,7 @@
   - [4. call bind apply](#4-call-bind-apply)
 - [Important JS Questions](#important-js-questions)
   - [1. Implement Fetch with n retries](#1-implement-fetch-with-n-retries)
+  - [2. Implement Memoize](#2-implement-memoize)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -155,6 +156,49 @@ fetchWithRetry(url_not_working, {},5, 2000)
   .then((response) => response.json())
   .then((data) => console.log(data))
   .catch((error) => console.error("Fetch failed:", error));
+
+```
+
+</p>
+</details>
+
+ #### 2. Implement Memoize
+
+ <details><summary><b>Solution</b></summary>
+<p>
+
+
+```js
+function Memoize (fn) {
+  const cache={}
+  return function (...args) {
+    let cacheArgs = JSON.stringify(args)
+    if(!cache.hasOwnProperty(cacheArgs)){
+      cache[cacheArgs] = fn(...args))
+    }
+    return cache[cacheArgs]
+  }
+}
+function messyProd(num1, num2) {
+  for (let i = 0; i < 2000000000; i++) {}
+  return num1 * num2;
+}
+const memoizedMessyProd = Memoize(messyProd);
+
+console.time("First");
+memoizedMessyProd(134, 345);
+console.timeEnd("First");
+
+console.time("Second");
+memoizedMessyProd(135, 345);
+console.timeEnd("Second");
+
+console.time("Third");
+memoizedMessyProd(135, 345);
+console.timeEnd("Third");
+//First: 1.610s
+//Second: 0.039ms
+//Third: 0.02ms
 
 ```
 
