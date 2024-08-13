@@ -10,6 +10,7 @@
 - [Important JS Questions](#important-js-questions)
   - [1. Implement Fetch with n retries](#1-implement-fetch-with-n-retries)
   - [2. Implement Memoize](#2-implement-memoize)
+  - [3. Implement Debounce](#3-implement-debounce)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -199,6 +200,65 @@ console.timeEnd("Third");
 //First: 1.610s
 //Second: 0.039ms
 //Third: 0.02ms
+
+```
+
+</p>
+</details>
+ 
+ #### 3. Implement Debounce
+ <details><summary><b>Solution</b></summary>
+<p>
+
+```js
+const debounce = (fn, delay) => {
+  let inDebounce;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(inDebounce);
+    inDebounce = setTimeout(() => fn.apply(context, args), delay);
+  };
+};
+
+const greet = () => {
+console.log('hey');
+}
+const debouncedGreet = debounce(greet, 500);
+window.addEventListener('mousemove', debouncedGreet);
+
+```
+
+</p>
+</details>
+ <details><summary><b>With Immediate Flag</b></summary>
+<p>
+
+```js
+const debounceWithImmediate = (func, wait, immediate) => {
+  let timeout;
+  return function () {
+    let context = this;
+    let args = arguments;
+
+    const callNow = immediate && !timeout;
+    clearTimeout(timeout);
+
+    timeout = setTimeout(function () {
+      timeout = null;
+      if (!immediate) {
+        func.apply(context, args);
+      }
+    }, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+const greet = () => {
+console.log('hey');
+}
+const debouncedGreet = debounceWithImmediate(greet, 500,true);
+window.addEventListener('mousemove', debouncedGreet);
 
 ```
 
