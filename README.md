@@ -11,6 +11,7 @@
   - [1. Implement Fetch with n retries](#1-implement-fetch-with-n-retries)
   - [2. Implement Memoize](#2-implement-memoize)
   - [3. Implement Debounce](#3-implement-debounce)
+  - [4. Execute async functions in Series](#4-execute-async-functions-in-series)
 - [Objects](#objects)
   - [1. Transform the given input to output](#1-transform-the-given-input-to-output)
   - [2. Nested Object](#2-nested-object)
@@ -262,6 +263,49 @@ window.addEventListener('mousemove', debouncedGreet);
 
 ```
 
+</p>
+</details>
+ 
+#### 4. Execute async functions in Series
+<details><summary><b>Solution</b></summary>
+<p>
+
+```js
+const asyncSerialExecuter = async function(promises) {
+  for(let prom of promises){
+    try{
+      const result = await prom
+      console.log(result)
+    }
+    catch(e){
+      console.log(e)
+    }
+  }
+}
+
+const asyncTask = function (i){
+  return new Promise((resolve,reject)=>{
+    setTimeout(()=>resolve(`Completing ${i}`),1000*i)
+  })
+}
+
+
+const promises =[
+  asyncTask(1),
+  asyncTask(3),
+  asyncTask(4),
+  asyncTask(6),
+  asyncTask(2)
+]
+
+asyncSerialExecuter(promises)
+//Completing 1
+//Completing 3
+//Completing 4
+//Completing 6
+//Completing 2
+
+```
 </p>
 </details>
  
