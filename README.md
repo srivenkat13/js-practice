@@ -6,7 +6,7 @@
   - [1. map](#1-map)
   - [2. Filter](#2-filter)
   - [3. Reduce](#3-reduce)
-  - [4. call bind apply](#4-call-bind-apply)
+  - [4. Call Bind Apply](#4-call-bind-apply)
 - [Important JS Questions](#important-js-questions)
   - [1. Implement Fetch with n retries](#1-implement-fetch-with-n-retries)
   - [2. Implement Memoize](#2-implement-memoize)
@@ -69,7 +69,7 @@ Array.prototype.myReduce = function (cb,init) {
     return acc
 }
 ```
-#### 4. call bind apply
+#### 4. Call Bind Apply
 <details><summary>.call()</summary>
 <p>
 
