@@ -282,6 +282,16 @@ const asyncSerialExecuter = async function(promises) {
     }
   }
 }
+//using recurion
+const asyncSerialExecuter2 = function(promises){
+  let promise = promises.shift()
+  promise.then(data=> 
+  console.log(data))
+
+  if(promises.length > 0 ){
+    asyncSerialExecuter2(promises)
+  }
+}
 
 const asyncTask = function (i){
   return new Promise((resolve,reject)=>{
