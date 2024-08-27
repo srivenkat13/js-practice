@@ -57,17 +57,16 @@
         z-index: 10;
         border: none;
         outline: none;
-        background-color: #79c0ff;
-        color: black;
+        background-color: rgb(244, 232, 232);
         cursor: pointer;
-        padding: 12px;
-        border-radius: 15px;
+        padding: 10px;
+        border-radius: 50%;
         box-shadow: 2px 2px 5px #666161;
         font-size: 1rem;
       }
 
-      #topButton:hover {
-        background-color: #0671cf;
+      #topButton:active {
+        transform: scale(0.9);
       }
 
       .progress-container {
@@ -92,7 +91,7 @@
       <div id="progress-bar"></div>
   </div>
     <div id="content"></div>
-    <button onclick="moveToTop()" id="topButton" title="Go to top">↑</button>
+    <button onclick="moveToTop()" id="topButton" title="Go to top">⬆️</button>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
