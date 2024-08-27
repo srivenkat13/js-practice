@@ -69,6 +69,10 @@
         transform: scale(0.9);
       }
 
+      #topButton.visible {
+        display: block;
+      }
+
       .progress-container {
         position: fixed;
         height: 0.2rem;
@@ -78,7 +82,7 @@
         width: 100%;
       }
 
-      #progress-bar{
+      #progress-bar {
         width: 0%;
         height: 100%;
         background-color: cyan;
@@ -89,7 +93,7 @@
   <body>
     <div class="progress-container">
       <div id="progress-bar"></div>
-  </div>
+    </div>
     <div id="content"></div>
     <button onclick="moveToTop()" id="topButton" title="Go to top">⬆️</button>
 
@@ -119,31 +123,39 @@
           .catch((error) => console.error("Error loading markdown:", error));
       });
       const topbtn = document.getElementById("topButton");
-      window.onscroll = function toTheTopbtn() {
-        if (
-          document.body.scrollTop > 20 ||
-          document.documentElement.scrollTop > 20
-        ) {
-          topbtn.style.display = "block";
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", function () {
+        const currentScroll =
+          window.pageYOffset || document.documentElement.scrollTop;
+
+        if (currentScroll > lastScroll) {
+          topbtn.classList.remove("visible");
         } else {
-          topbtn.style.display = "none";
+          topbtn.classList.add("visible");
         }
-      };
+
+        lastScroll = currentScroll <= 0 ? 0 : currentScroll;
+      });
 
       function moveToTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
       }
-      
-      function updateProgressBar(){
-        let scrollToTop = document.body.scrollTop || document.documentElement.scrollTop;
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        let scrollUpdate = (scrollToTop/height) * 100 ;
 
-        document.getElementById('progress-bar').style.width = scrollUpdate + '%';
+      function updateProgressBar() {
+        let scrollToTop =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        let height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        let scrollUpdate = (scrollToTop / height) * 100;
+
+        document.getElementById("progress-bar").style.width =
+          scrollUpdate + "%";
       }
 
-      window.addEventListener('scroll', updateProgressBar);
+      window.addEventListener("scroll", updateProgressBar);
     </script>
   </body>
 </html>
