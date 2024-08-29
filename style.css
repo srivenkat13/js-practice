@@ -46,21 +46,17 @@ body {
   background: #2b283aff;
   color: #fff;
 }
-#redirect {
-  position: absolute;
-  top: 0;
-  right: 5%;
-  font-size: 1.5rem;
-  font-weight: bold;
-  border: 2px gray dotted;
-  padding: 10px;
-}
+
 a {
-  
   text-decoration: none;
 }
-#redirect:hover {
-  border: 2px gray solid;
-  transform: scale(1.1);
+.project:nth-child(-n+2)
+{  background-color: rgb(139, 230, 155);
+  padding: 0px;
+  margin-bottom: 2px;
 }
- 
+.project:nth-child(-n+2) >p
+{  
+  margin: 4px;
+}
+

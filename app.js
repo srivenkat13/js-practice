@@ -1,5 +1,15 @@
 const projects = [
   {
+    number:'1a',
+    name: "JS Question🤔",
+    path: "questions.html",
+  },
+  {
+    number: '1b',
+    name: "React Question⚛️",
+    path: "react.html",
+  },
+  {
     number: 01,
     name: "Earth Day Poem🌍",
     path: "earth-day-theme-dom-ex/one/index.html",
